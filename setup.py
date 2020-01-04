@@ -216,42 +216,8 @@ if has_option('--with-lua-checks'):
 
 # bundled lua
 lua_bundle_path = 'third-party/lua/'
-lua_sources = [
-    'lapi.c',
-    'lcode.c',
-    'lctype.c',
-    'ldebug.c',
-    'ldo.c',
-    'ldump.c',
-    'lfunc.c',
-    'lgc.c',
-    'llex.c',
-    'lmem.c',
-    'lobject.c',
-    'lopcodes.c',
-    'lparser.c',
-    'lstate.c',
-    'lstring.c',
-    'ltable.c',
-    'ltm.c',
-    'lundump.c',
-    'lvm.c',
-    'lzio.c',
-    'ltests.c',
-    'lauxlib.c',
-    'lbaselib.c',
-    'ldblib.c',
-    'liolib.c',
-    'lmathlib.c',
-    'loslib.c',
-    'ltablib.c',
-    'lstrlib.c',
-    'lutf8lib.c',
-    'lbitlib.c',
-    'loadlib.c',
-    'lcorolib.c',
-    'linit.c',
-]
+import glob, os.path
+lua_sources = [ os.path.basename(p) for p in glob.iglob(lua_bundle_path + '*.c') ]
 
 
 config = None
